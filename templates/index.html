@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Database and Table Creation</title>
+</head>
+<body>
+    <h1>Database and Table Creation</h1>
+    
+    <form action="/create_db" method="post">
+        <button type="submit">Create Database</button>
+    </form>
+    
+    <form action="/create_tables" method="post">
+        <button type="submit">Create Tables</button>
+    </form>
+
+    <form action="/populate_table" method="post">
+        <button type="submit">Populate Tables</button>
+    </form>
+    
+    <form action="/view_tables" method="post">
+        <button type="submit">View Tables</button>
+    </form>
+
+    <form action="/search_member" method="post">
+        <label for = "memberID">Enter Member ID: </label>
+        <input type="number" name="memberNum" id=""memberNum>
+        <button type="submit">Search</button>
+    </form>
+
+    <h3>{{ error|safe }}</h3>
+    <h3>{{ success|safe }}</h3>
+
+</body>
+</html>

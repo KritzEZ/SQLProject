@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Member Transactions</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Member Profile : {{ id|safe }}</h1>
+
+    <form action="/" method="get">
+        <button type="submit">Back to Home</button>
+    </form>
+    
+    <form action="/process_selected_rows" method="post">
+        <h2>Bank Transaction Table</h2>
+        <table>
+            <tr>
+                <th>Select</th>
+                {% for column in df1.columns %}
+                    <th>{{ column }}</th>
+                {% endfor %}
+            </tr>
+            {% for index, row in df1.iterrows() %}
+                <tr>
+                    <td><input type="checkbox" class="row-checkbox" name="selected_rows_df1" value="{{ loop.index }}"></td>
+                    {% for value in row %}
+                        <td>{{ value }}</td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </table>
+        
+        <h2>Memeber Transaction Table</h2>
+        <table>
+            <tr>
+                <th>Select</th>
+                {% for column in df2.columns %}
+                    <th>{{ column }}</th>
+                {% endfor %}
+            </tr>
+            {% for index, row in df2.iterrows() %}
+                <tr>
+                    <td><input type="checkbox" class="row-checkbox" name="selected_rows_df2" value="{{ loop.index }}"></td>
+                    {% for value in row %}
+                        <td>{{ value }}</td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </table>
+        <br><br>
+        <button type="submit">Submit Selected Rows</button>
+    </form>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.row-checkbox').forEach(function(checkbox) {
+                checkbox.addEventListener('change', function() {
+                    if (this.checked) {
+                        this.parentNode.parentNode.classList.add('selected-row');
+                    } else {
+                        this.parentNode.parentNode.classList.remove('selected-row');
+                    }
+                });
+            });
+        });
+    </script>
+    
+</body>
+</html>

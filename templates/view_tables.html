@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Display Dataframes</title>
+</head>
+<body>
+    <h1>Display Dataframes</h1>
+
+    <form action="/" method="get">
+        <button type="submit">Back to Home</button>
+    </form>
+    
+    <h2>Bank Transactions</h2>
+    {{ df1|safe }}
+    
+    <h2>Memeber Transactions</h2>
+    {{ df2|safe }}
+    
+</body>
+</html>
